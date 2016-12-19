@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' />
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/simon.css">
+    </head>
+    <body>
+      <div class="content">
+        <h1 class="header">FreeCodeCamp</h1>
+        <div class="simon" ng-app="simon" ng-controller="SimonController">
+          <div class="top row">
+            <div class="green button" ng-class="{'on': activate == 'green', 'clickable': isClickable() }" ng-click="isClickable() && verify('green')"></div>
+            <div class="blue button" ng-class="{'on': activate == 'blue', 'clickable': isClickable() }" ng-click="isClickable() && verify('blue')"></div>
+          </div>
+          <div class="bottom row">
+            <div class="red button" ng-class="{'on': activate == 'red', 'clickable': isClickable() }" ng-click="isClickable() && verify('red')"></div>
+            <div class="yellow button" ng-class="{'on': activate == 'yellow', 'clickable': isClickable() }" ng-click="isClickable() && verify('yellow')"></div>
+          </div>
+          <div class="center">
+            <h1 id="logo">Simon<span class="small">®</span></h1>
+            <div id="control">
+              <div class="blue rnd btn" ng-class="{'on': simon.isOn() }" ng-click="power()"></div>
+              <div class="red rnd btn" ng-click="restart()"></div>
+              <div class="yellow rnd btn" ng-class="{'on': simon.isStrict() }" ng-click="strictMode()"></div>
+            </div>
+            <h1 class="count" ng-class="{'led-off': !simon.isOn() }">{{sequences.length === 0 ? '--' : sequences.length}}</h1>
+          </div>
+        </div>
+      </div>
+
+      <footer class="ui text container" id="footer">
+        <p>Designed &amp; Coded by <a href="https://github.com/theslyone" target="_blank">slyguy</a></p>
+      </footer>
+      <script src="js/vendor/jquery-1.12.0.min.js"></script>
+      <script src="js/vendor/angular.min.js"></script>
+      <script src="js/vendor/underscore-min.js"></script>
+      <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+      <script src="js/plugins.js"></script>
+      <script src="js/simon.app.js"></script>
+      <script src="js/simon.factory.js"></script>
+      <script src="js/simon.controller.js"></script>
+    </body>
+</html>

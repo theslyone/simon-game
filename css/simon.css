@@ -1,0 +1,182 @@
+body {
+  background-color: #d1d1d1; }
+
+.content {
+  height: 500px;
+  width: 450px;
+  margin: 0px auto;
+  padding-top: 20px; }
+
+.header {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif; }
+
+.simon {
+  margin-top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  height: 400px;
+  width: 400px;
+  background-color: #373737;
+  position: relative;
+  box-shadow: inset 0 0 25px #000; }
+  .simon .row {
+    height: 200px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px; }
+    .simon .row.top {
+      padding-top: 30px;
+      padding-bottom: 15px; }
+    .simon .row.bottom {
+      padding-top: 15px;
+      padding-bottom: 30px; }
+    .simon .row .button {
+      height: 154px;
+      width: 154px;
+      display: inline-block;
+      cursor: default;
+      box-shadow: 0px 5px 5px #071013, inset 0 -5px rgba(0, 0, 0, 0.4);
+      transition: ease 0.5s; }
+      .simon .row .button:before, .simon .row .button:after {
+        content: " ";
+        display: table; }
+      .simon .row .button:after {
+        clear: both; }
+      .simon .row .button.clickable {
+        cursor: pointer; }
+        .simon .row .button.clickable:active {
+          transform: scale(0.98, 0.98);
+          box-shadow: 0 1px 1px #292929; }
+      .simon .row .button.green {
+        border-top-left-radius: 100%;
+        background-color: #29d935;
+        float: left; }
+        .simon .row .button.green.on {
+          background-color: #13ff7c; }
+      .simon .row .button.blue {
+        border-top-right-radius: 100%;
+        background-color: #3661c4;
+        float: right; }
+        .simon .row .button.blue.on {
+          background-color: #1c8cff; }
+      .simon .row .button.red {
+        border-bottom-left-radius: 100%;
+        background-color: #ff6b66;
+        float: left; }
+        .simon .row .button.red.on {
+          background-color: #fc0800; }
+      .simon .row .button.yellow {
+        border-bottom-right-radius: 100%;
+        background-color: #ece692;
+        float: right; }
+        .simon .row .button.yellow.on {
+          background-color: #ffee00; }
+  .simon .center {
+    height: 133.33333px;
+    width: 133.33333px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-clip: padding-box;
+    /* stops bg color from leaking outside the border: */
+    top: 121.33333px;
+    right: 121.33333px;
+    bottom: 121.33333px;
+    left: 121.33333px;
+    position: absolute;
+    background-color: #373737;
+    display: inline-block;
+    border: 12px solid #373737;
+    background-color: #d1d1d1;
+    cursor: default;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.4); }
+    .simon .center #logo {
+      height: 20%;
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
+      -webkit-border-top-right-radius: 100%;
+      border-top-right-radius: 100%;
+      -webkit-border-top-left-radius: 100%;
+      border-top-left-radius: 100%;
+      background-clip: padding-box;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      font-family: 'Alfa Slab One', cursive; }
+    .simon .center #control {
+      margin: 0 auto;
+      width: 75%;
+      border-radius: 0 0 90px 90px;
+      -moz-border-radius: 0 0 90px 90px;
+      -webkit-border-radius: 0 0 90px 90px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; }
+      .simon .center #control .rnd.btn {
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background-clip: padding-box;
+        /* stops bg color from leaking outside the border: */
+        height: 20px;
+        width: 20px;
+        display: inline-block;
+        border: 2px solid #373737;
+        box-shadow: 0px 2px 3px #071013;
+        cursor: pointer;
+        margin: 5px;
+        box-sizing: border-box; }
+        .simon .center #control .rnd.btn:active, .simon .center #control .rnd.btn.on {
+          border: 4px solid #373737;
+          box-shadow: inset 0 1px 1px #292929;
+          top: -4px; }
+      .simon .center #control .blue {
+        background-color: #3661c4; }
+      .simon .center #control .red {
+        background-color: #ff3630; }
+      .simon .center #control .yellow {
+        background-color: #fff130; }
+    .simon .center .count {
+      font-family: 'VT323', monospace;
+      color: #DC0D29;
+      padding: 0px;
+      font-size: 1em;
+      width: 50px;
+      background-color: #32050C;
+      position: relative;
+      border: 4px solid #373737;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background-clip: padding-box;
+      /* stops bg color from leaking outside the border: */
+      margin: auto;
+      text-align: center; }
+    .simon .center .led-off {
+      color: #430710; }
+    .simon .center .led-on {
+      background-color: #DC0D29; }
+
+#footer {
+  font-family: sans-serif;
+  position: relative;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 40px;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 20px; }
+
+/*# sourceMappingURL=simon.css.map */

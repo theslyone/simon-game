@@ -1,0 +1,306 @@
+$height: 400;
+$width: 400;
+
+$rich-black: #071013;
+$red: rgba(255, 54, 48, 1);
+$burgundy: rgba(35, 11, 10, 0.85);
+$blue: rgba(54, 97, 196, 1);
+$light-blue: rgba(89, 196, 206, 1);
+$green: rgba(41, 217, 53, 1);
+$yellow: rgba(255, 241, 48, 1);
+$gray: #373737;
+$light-gray: #d1d1d1;
+$shadow: rgba(10, 10, 10, 1);
+$bg-shadow: linear-gradient(to top, rgba($gray, 0.2), rgba($shadow, 0.3));
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+   -webkit-border-top-left-radius: $radius;
+   border-top-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+     -webkit-border-top-right-radius: $radius;
+     border-top-right-radius: $radius;
+     background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+   -webkit-border-bottom-left-radius: $radius;
+   border-bottom-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+     -webkit-border-top-left-radius: $radius;
+     border-top-left-radius: $radius;
+     background-clip: padding-box;
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top + px;
+  right: $right + px;
+  bottom: $bottom + px;
+  left: $left + px;
+  position: absolute;
+}
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: (0.125 * $sizeValue) + rem;
+}
+@mixin dimension($height: $height, $width: $width){
+  height: $height + px;
+  width: $width + px;
+}
+@mixin line-height($heightValue: 12 ){
+    line-height: $heightValue + px; //fallback for old browsers
+    line-height: (0.125 * $heightValue) + rem;
+}
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+@mixin box-shadow($x, $y, $e, $col){
+  -webkit-box-shadow: $x $y $e $col;
+  -o-box-shadow: $x $y $e $col;
+  box-shadow: $x $y $e $col;
+}
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  // For IE 6/7 (trigger hasLayout)
+  }
+@mixin background-image {
+  background-image: linear-gradient(right, #111 11%, #333 56%);
+  background-image: -o-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -moz-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -webkit-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -ms-linear-gradient(right, #111 11%, #333 56%);
+  background-image: gradient(right, #111 11%, #333 56%);
+}
+
+body{
+  background-color: $light-gray;
+}
+
+.content {
+  height: 500px;
+  width: 450px;
+  margin: 0px auto;
+  padding-top: 20px;
+}
+
+.header{
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+.simon{
+  margin-top: 40px;
+  @include center-block;
+  @include border-radius(50%);
+  @include dimension;
+  background-color: $gray;
+  position: relative;
+  box-shadow: inset 0 0 25px #000;
+
+  .row{
+    @include dimension($height/2);
+    @include center-block;
+    @include box-sizing(border-box);
+    padding-left: 30px;
+    padding-right: 30px;
+    &.top{
+      padding-top: 30px;
+      padding-bottom: 15px;
+    }
+    &.bottom{
+      padding-top: 15px;
+      padding-bottom: 30px;
+    }
+
+    .button{
+      @include dimension(154, 154);
+      display: inline-block;
+      @include clearfix;
+      cursor: default;
+      box-shadow: 0px 5px 5px $rich-black, inset 0 -5px rgba(0,0,0,.4);
+      transition: ease 0.5s;
+
+      &.clickable{
+        cursor: pointer;
+        &:active {
+          transform: scale(0.98,0.98);
+          box-shadow: 0 1px 1px #292929;
+        }
+      }
+
+      &.green{
+        border-top-left-radius: 100%;
+        background-color: $green;
+        float: left;
+        &.on{
+          background-color : #13ff7c;
+        }
+      }
+
+      &.blue{
+        border-top-right-radius: 100%;
+        background-color: $blue;
+        float: right;
+        &.on{
+          background-color : #1c8cff;
+        }
+      }
+
+      &.red{
+        border-bottom-left-radius: 100%;
+        background-color: #ff6b66;
+        float: left;
+        &.on{
+          background-color : #fc0800;
+        }
+      }
+
+      &.yellow{
+        border-bottom-right-radius: 100%;
+        background-color: #ece692;
+        float: right;
+        &.on{
+          background-color : #ffee00;
+        }
+      }
+    }
+
+
+  }
+
+  .center{
+    @include dimension($height/3, $width/3);
+    @include border-radius(50%);
+    @include abs-pos((($height - $height/3)/2)-12,(($height - $height/3)/2)-12,
+      (($height - $height/3)/2)-12, (($height - $height/3)/2)-12);
+    background-color: $gray;
+    display: inline-block;
+    border: 12px solid $gray;
+    background-color: $light-gray;
+    cursor: default;
+    box-shadow: inset 0 0 10px 2px rgba(0,0,0,.4);
+
+    #logo{
+      height: 20%;
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
+      @include border-top-radius(100%);
+      @include center-block;
+      margin-top: 15px;
+      font-family: 'Alfa Slab One', cursive;
+    }
+
+    #control{
+      margin: 0 auto;
+      width: 75%;
+      border-radius: 0 0 90px 90px;
+      -moz-border-radius: 0 0 90px 90px;
+      -webkit-border-radius: 0 0 90px 90px;
+      @include center-block;
+
+      .rnd.btn{
+        @include border-radius(50%);
+        @include dimension(20,20);
+        display: inline-block;
+        border: 2px solid $gray;
+        box-shadow: 0px 2px 3px $rich-black;
+        cursor: pointer;
+        margin: 5px;
+        box-sizing: border-box;
+
+        &:active, &.on {
+          border: 4px solid $gray;
+          box-shadow: inset 0 1px 1px #292929;
+          top: -4px;
+        }
+      }
+
+      .blue{
+        background-color: $blue;
+      }
+
+      .red{
+        background-color: $red;
+      }
+
+      .yellow{
+        background-color: $yellow;
+      }
+    }
+
+    .count {
+      font-family: 'VT323', monospace;
+      color: #DC0D29;
+      padding: 0px;
+      font-size: 1em;
+      width: 50px;
+      background-color: #32050C;
+      position: relative;
+      border: 4px solid $gray;
+      @include border-radius(10px);
+      margin: auto;
+      text-align: center;
+    }
+
+    .led-off {
+      color: #430710;
+    }
+
+    .led-on {
+      background-color: #DC0D29;
+    }
+  }
+
+}
+
+#footer {
+  font-family: sans-serif;
+  position: relative;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 40px;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 20px;
+}
